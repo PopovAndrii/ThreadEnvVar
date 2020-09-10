@@ -5,7 +5,7 @@ SYSTEMTIME t;
 
 DWORD WINAPI TreadTime(void* param) {
 
-    for (;; Sleep(1000)) {
+    for (;; Sleep(2000)) {
         GetSystemTime(&t);
         std::cout << "Time: " << t.wHour << ":" << t.wMinute << ":" << t.wSecond << std::endl;
     }
@@ -21,10 +21,9 @@ int main()
 
     int valueTime = 0;
 
-    if (!err) {
+    if (err == 0 && pValue != nullptr) {
         printf("MYTIME = %s\n", pValue);
-
-        valueTime = int(pValue); // * 1000
+        valueTime = atoi(pValue) * 1000;
     }
 
     std::cout << valueTime << std::endl;
